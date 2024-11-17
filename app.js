@@ -12,6 +12,12 @@ const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
 const validateName = document.getElementById("validate-name");
+const intelBtn = document.getElementById("intel-btn");
+const strBtn = document.getElementById("str-btn");
+const dexBtn = document.getElementById("dex-btn");
+const constBtn = document.getElementById("const-btn");
+const charBtn = document.getElementById("char-btn");
+const wisdomBtn = document.getElementById("wisdom-btn");
 
 // text
 const text = document.querySelector("#text");
@@ -161,6 +167,18 @@ function fillName() {
 validateName.addEventListener("click", () => {
   fillName();
 });
+
+// Abilities stats
+const abilities = ["intel", "str", "dex", "const", "char", "wisdom"];
+abilities.forEach((ability) => {
+  document.getElementById(`${ability}-btn`).onclick = () => {
+    let score = Math.floor(Math.random() * 20);
+    document.getElementById(`${ability}-score`).innerText = `${score}`;
+    if (score >= 10) {
+      document.getElementById(`${ability}-btn`).classList.add("hidden");
+    }
+  }
+})
 
 // initialise buttons
 button1.onclick = goStore;
