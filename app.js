@@ -20,6 +20,7 @@ const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
 const validateName = document.getElementById("validate-name");
+const validateClass = document.getElementById("validate-class");
 const intelBtn = document.getElementById("intel-btn");
 const strBtn = document.getElementById("str-btn");
 const dexBtn = document.getElementById("dex-btn");
@@ -31,6 +32,7 @@ const wisdomBtn = document.getElementById("wisdom-btn");
 const text = document.querySelector("#text");
 const chosenName = document.getElementById("chosen-name");
 const playerName = document.getElementById("player-name");
+const playerClass = document.getElementById("player-class");
 const habilityText = document.getElementById("habilityText");
 const enduranceText = document.getElementById("enduranceText");
 const goldText = document.querySelector("#goldText");
@@ -181,7 +183,7 @@ const abilities = ["intel", "str", "dex", "const", "char", "wisdom"];
 abilities.forEach((ability) => {
   document.getElementById(`${ability}-btn`).onclick = () => {
     let score = Math.floor(Math.random() * 20);
-    document.getElementById(`${ability}-score`).innerText = `${score}`;
+    document.getElementById(`${ability}-score`).innerText = score ;
     if (score >= 10) { // if score < 10 : reroll the dice
       document.getElementById(`${ability}-btn`).classList.toggle("hidden");
       document.getElementById(`${ability}-modifier`).innerText = 0;
@@ -220,7 +222,7 @@ let classes = [
 ];
 
 classes.forEach((choice) => {
-  selectedClass.addEventListener("change", () => {
+  selectedClass.addEventListener("change", () => { // update class recap depending on class choice
     if (selectedClass.value === choice.name) {
       pvRecap.innerText = `Your ${choice.name} will begin with ${choice.pv} pv added to its Constitution roll.`;
       bonusRecap.innerText = `Your ${choice.name} will have a bonus of +${choice.bonus} in ${choice.ability}.`;
@@ -228,8 +230,19 @@ classes.forEach((choice) => {
       speRecap.innerText = `Your ${choice.name} can master two of the following: ${choice.skills}.`;
       choiceRecap.innerText = `Your ${choice.name} will begin with one of the following weapons: ${choice.weapons}.`
     }
+  });
+
+  validateClass.addEventListener("click", () => { // when the player validate his class choice, everything linked to this class update automatically
+    if (selectedClass.value === choice.name) {
+      classRecap.classList.toggle("hidden");
+      validateClass.classList.toggle("hidden");
+      selectedClass.classList.toggle("hidden");
+      playerClass.innerText = `${choice.name}`;
+      document.getElementById("selected-class-label").classList.toggle("hidden");
+      document.getElementById(`${choice.ability}-score`).innerText = Number(document.getElementById(`${choice.ability}-score`).innerText) + Number(choice.bonus);
+    }
   })
-})
+});
 
 // initialise buttons
 button1.onclick = goStore;

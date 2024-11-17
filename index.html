@@ -213,13 +213,14 @@
             <!-- Class -->
             <div>
               <p class="strong">Class: <span id="player-class"></span></p>
-              <label for="selected-class">Select a class amongst: </label>
+              <label id="selected-class-label" for="selected-class">Select a class amongst: </label>
               <select name="selected-class" id="selected-class" required>
                 <option value="Barbarian" selected>Barbarian</option>
                 <option value="Magician">Magician</option>
                 <option value="Monk">Monk</option>
                 <option value="Ranger">Ranger</option>
               </select>
+              <button id="validate-class">Validate</button>
             </div>
 
             <div id="class-recap">
