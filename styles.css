@@ -1,0 +1,62 @@
+body {
+  background-color: #0a0a23;
+  display: flex;
+  height: 100vh;
+  color: white;
+}
+
+#text {
+  background-color: #0a0a23;
+  color: #ffffff;
+  padding: 10px;
+}
+
+#game {
+  max-width: 800px;
+  max-height: 400px;
+  background-color: #ffffff;
+  color: #ffffff;
+  margin: auto;
+  padding: 10px;
+}
+
+#controls,
+#stats {
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #0a0a23;
+  display: flex;
+}
+
+#stats {
+  justify-content: space-around;
+}
+
+#controls {
+  justify-content: center;
+  gap: 10px;
+}
+
+#monsterStats {
+  display: none;
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #ffffff;
+  background-color: #c70d0d;
+}
+
+button {
+  cursor: pointer;
+  color: #0a0a23;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #feac32;
+}
+
+.hidden {
+  display: none;
+}
+
+.strong {
+  font-weight: bold;
+}

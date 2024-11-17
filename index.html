@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Role Playing Game">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Role Playing Game</title>
+    <script type="module" src="./app.js" defer></script>
+  </head>
+
+  <!-- This project is based on FreeCodeCamp's ‘RPG - Dragon Repeller’ project, which is part of the JavaScript Algorithms and Data Structures certification (beta). I wanted to take this project a step further by increasing its volume and offering the user a real multiple-choice RPG, with more encounters, possible endings, weapons and objects. This gave me the opportunity to master the basics of JavaScript and data management, while focusing on making the code readable.  -->
+
+  <body>
+
+    <div id="character">
+      <div id="info">
+        <p><span class="strong">Name: </span><label id="chosen-name-label" for="chosen-name">Chose a name.</label><input id="chosen-name" name="player-name" placeholder="e.g. Wolf Tamer"><button id="validate-name">Validate</button><span id="player-name"></span></p>
+
+        <div id="abilities">
+          <div id="intel">
+            <p class="strong">Intelligence</p>
+            <button id="intel-btn">Roll 1d20</button>
+            <p id="intel-score"></p>
+          </div>
+          <div id="strength">
+            <p class="strong">Strength</p>
+            <button id="strength-btn">Roll 1d20</button>
+            <p id="strength-score"></p>
+          </div>
+          <div id="dexterity">
+            <p class="strong">Dexterity</p>
+            <button id="dex-btn">Roll 1d20</button>
+            <p id="dex-score"></p>
+          </div>
+          <div id="constitution">
+            <p class="strong">Consitution</p>
+            <button id="const-btn">Roll 1d20</button>
+            <p id="const-score"></p>
+          </div>
+          <div id="charisma">
+            <p class="strong">Charisma</p>
+            <button id="charisma-btn">Roll 1d20</button>
+            <p id="charisma-score"></p>
+          </div>
+          <div id="wisdom">
+            <p class="strong">Wisdom</p>
+            <button id="wisdom-btn">Roll 1d20</button>
+            <p id="wisdom-score"></p>
+          </div>
+        </div>
+      </div>
+
+      <div id="inventory">
+        <p><span class="strong">Gold: </span><span id="goldText"></span></p>
+
+        <div id="weapon">
+          <p><span class="strong">Your weapons: </span>(max. 2)</p>
+        </div>
+
+        <div id="objects">
+          <p><span class="strong">Your objects: </span>(max. 8)</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="game">
+      <div id="controls">
+        <button id="button1">Go to store</button>
+        <button id="button2">Go to cave</button>
+        <button id="button3">Fight dragon</button>
+        <button id="button4" style="display: none"></button>
+      </div>
+
+      <div id="monsterStats">
+        <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+        <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+      </div>
+
+      <div id="text">
+        Welcome to Dragon Repeller. You must defeat the dragon that is preventing people from leaving the town. You are in the town square. Where do you want to go? Use the buttons above.
+      </div>
+    </div>
+
+  </body>
+</html>
