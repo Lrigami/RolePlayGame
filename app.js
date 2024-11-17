@@ -6,6 +6,14 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
+// recap info
+const classRecap = document.getElementById("class-recap"); 
+const pvRecap = document.getElementById("pv-recap"); 
+const bonusRecap = document.getElementById("bonus-recap"); 
+const masteringRecap = document.getElementById("mastering-recap"); 
+const speRecap = document.getElementById("specialisation-recap"); 
+const choiceRecap = document.getElementById("choice-recap");
+
 // buttons
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
@@ -198,31 +206,30 @@ document.getElementById("gold-btn").onclick = () => {
 let selectedClass = document.getElementById("selected-class");
 let classes = [
   {
-    name: "Barbarian", pv: 12, bonus: 3, ability: "str", skills: ["Athletics", "Training", "Intimidation", "Nature", "Perception", "Survival"], weapons: ["a battle axe", "a sword", "a mace", "a halberd"], belongings: ["explorer bag", "5 survival rations", "a purse"]
+    name: "Barbarian", pv: 12, bonus: 3, abilityRecap: "strength", ability: "str", master: "all weapons and armours", skills: ["Athletics", "Training", "Intimidation", "Nature", "Perception", "Survival"], weapons: ["a battle axe", "a sword", "a mace", "a halberd"], belongings: ["5 survival rations"]
   }, 
   {
-    name: "Magician", pv: 6, bonus: 3, ability: "wisdom", skills: ["Arcana", "History", "Intuition", "Investigation", "Medicine", "Religion", "Deception"], weapons: ["a staff", "a dagger"], belongings: ["satchel with magical components", "explorer bag", "5 survival rations", "a grimoire", "a purse"]
+    name: "Magician", pv: 6, bonus: 3, abilityRecap: "wisdom", ability: "wisdom", master: "staffs, light weapons and light armours", skills: ["Arcana", "History", "Intuition", "Investigation", "Medicine", "Religion", "Deception"], weapons: ["a staff", "a dagger"], belongings: ["satchel with magical components", "5 survival rations", "a grimoire"]
   }, 
   {
-
+    name: "Monk", pv: 8, abilityRecap: "intelligence", ability: "intel", master: "all light weapons and light and heavy armours.", skills: ["Acrobatics", "Athletics", "Discretion", "History", "Intuition", "Persuasion", "Representation", "Religion"], weapons: ["a short sword", "a spear", "a staff", "a dagger"], belongings: ["5 survival rations"]
   }, 
   {
-    
+    name: "Ranger", pv: 10, abilityRecap: "dexterity", ability: "dex", master: "light weapons and armour as well as ranged weapons", skills: ["Athletics", "Discretion", "Dressage", "Escamotage", "Intuition", "Investigation", "Nature", "Perception", "Survival"], weapons: ["a short sword", "a dagger", "a spear"], belongings: ["5 survival rations", "a longbow", "a quiver with 20 arrows"]
   }
-]
-selectedClass.addEventListener("change", () => {
-  let chosenClass = selectedClass.value;
-  if (chosenClass === "Barbarian") {
+];
 
-  } else if (chosenClass === "Magician") {
-
-  } else if (chosenClass === "Monk") {
-
-  } else if (chosenClass === "Ranger") {
-
-  }
+classes.forEach((choice) => {
+  selectedClass.addEventListener("change", () => {
+    if (selectedClass.value === choice.name) {
+      pvRecap.innerText = `Your ${choice.name} will begin with ${choice.pv} pv added to its Constitution roll.`;
+      bonusRecap.innerText = `Your ${choice.name} will have a bonus of +${choice.bonus} in ${choice.ability}.`;
+      masteringRecap.innerText = `Your ${choice.name} can master ${choice.master}.`;
+      speRecap.innerText = `Your ${choice.name} can master two of the following: ${choice.skills}.`;
+      choiceRecap.innerText = `Your ${choice.name} will begin with one of the following weapons: ${choice.weapons}.`
+    }
+  })
 })
-
 
 // initialise buttons
 button1.onclick = goStore;
