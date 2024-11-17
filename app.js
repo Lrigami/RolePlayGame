@@ -117,13 +117,50 @@ const locations = [
 ];
 
 // initialise stats and info
-function hasChosenAName() {
-  playerName.innerText = `${chosenName.value}`;
-  document.getElementById("chosen-name-label").classList.toggle("hidden");
-  chosenName.classList.toggle("hidden");
-  validateName.classList.toggle("hidden");
-}
-validateName.addEventListener("click", hasChosenAName);
+// Choose a non empty string name
+const errorNameP = document.getElementById("error-name");
+const nameDiv = document.getElementById("name-div");
+
+// Verify if the player chose a valid name
+const hasChosenAName = () => {
+  if (chosenName.value !== "") {
+    return true;
+  } else { // Add an alert if not
+    if (!document.getElementById("error-name")) {
+      const errorP = document.createElement("p");
+      errorP.id = "error-name";
+      errorP.innerText = "Please choose a valid name.";
+      nameDiv.appendChild(errorP);
+    }
+    return false;
+  }
+};
+
+// if the player choose a valid name : display or hide the alert msg
+const errorName = () => {
+  const errorElement = document.getElementById("error-name");
+  if (errorElement) {
+    errorElement.classList.add("hidden");
+  }
+};
+
+// fill the Name span with the right name chosen by the player
+function fillName() {
+  if (hasChosenAName()) {
+    playerName.innerText = `${chosenName.value}`;
+    document.getElementById("chosen-name-label").classList.toggle("hidden");
+    chosenName.classList.toggle("hidden");
+    validateName.classList.toggle("hidden");
+    errorName(); // remove the alert if there was one
+  } else {
+    hasChosenAName(); // add the alert 
+  }
+};
+
+// execute the function on click
+validateName.addEventListener("click", () => {
+  fillName();
+});
 
 // initialise buttons
 button1.onclick = goStore;

@@ -12,10 +12,10 @@
   <body>
 
     <div id="welcome">
-      <div id="page-one">
+      <div id="page-one-welcome">
         <h1>Welcome to XXX RPG !</h1>
       </div>
-      <div id="page-two">
+      <div id="page-two-rules">
         <h2>XXX RPG rules</h2>
         <details>
           <summary>Game rules:</summary>
@@ -198,45 +198,67 @@
           </details>
         </details>
       </div>
+      <div id="page-three-creation">
+        <!-- Character creation -->
+        <div id="character">
+          <div id="info">
+            <!-- Name -->
+            <div id="name-div">
+              <p class="strong">Name: <span id="player-name"></span></p>
+              <label id="chosen-name-label" for="chosen-name">Chose a name.</label>
+              <input id="chosen-name" name="player-name" placeholder="e.g. Wolf Tamer" required>
+              <button id="validate-name">Validate</button>
+            </div>
+    
+            <!-- Class -->
+            <div>
+              <p class="strong">Class: <span id="player-class"></span></p>
+              <label for="selected-class">Select a class amongst: </label>
+              <select name="selected-class" id="selected-class" required>
+                <option value="Barbarian" selected>Barbarian</option>
+                <option value="Magician">Magician</option>
+                <option value="Monk">Monk</option>
+                <option value="Ranger">Ranger</option>
+              </select>
+            </div>
+
+            <!-- Abilities -->
+            <div id="abilities">
+              <div id="intel">
+                <p class="strong">Int: <span id="intel-score"></span> (<span id="intel-modifier"></span>)</p>
+                <button id="intel-btn">Roll 1d20</button>        
+              </div>
+              <div id="str">
+                <p class="strong">Str: <span id="str-score"></span> (<span id="str-modifier"></span>)</p>
+                <button id="str-btn">Roll 1d20</button>
+              </div>
+              <div id="dex">
+                <p class="strong">Dex: <span id="dex-score"></span> (<span id="dex-modifier"></span>)</p>
+                <button id="dex-btn">Roll 1d20</button>
+              </div>
+              <div id="const">
+                <p class="strong">Con: <span id="const-score"></span> (<span id="const-modifier"></span>)</p>
+                <button id="const-btn">Roll 1d20</button>
+              </div>
+              <div id="char">
+                <p class="strong">Cha: <span id="char-score"></span> (<span id="char-modifier"></span>)</p>
+                <button id="char-btn">Roll 1d20</button>
+              </div>
+              <div id="wisdom">
+                <p class="strong">Wis: <span id="wisdom-score"></span> (<span id="wisdom-modifier"></span>)</p>
+                <button id="wisdom-btn">Roll 1d20</button>
+              </div>
+            </div>
+
+            <!-- Expertise -->
+            <div>
+
+            </div>
+          </div>
+      </div>
     </div>
 
-    <div id="character">
-      <div id="info">
-        <p><span class="strong">Name: </span><label id="chosen-name-label" for="chosen-name">Chose a name.</label><input id="chosen-name" name="player-name" placeholder="e.g. Wolf Tamer"><button id="validate-name">Validate</button><span id="player-name"></span></p>
 
-        <div id="abilities">
-          <div id="intel">
-            <p class="strong">Int</p>
-            <button id="intel-btn">Roll 1d20</button>
-            <p id="intel-score"></p>
-          </div>
-          <div id="strength">
-            <p class="strong">Str</p>
-            <button id="strength-btn">Roll 1d20</button>
-            <p id="strength-score"></p>
-          </div>
-          <div id="dexterity">
-            <p class="strong">Dex</p>
-            <button id="dex-btn">Roll 1d20</button>
-            <p id="dex-score"></p>
-          </div>
-          <div id="constitution">
-            <p class="strong">Con</p>
-            <button id="const-btn">Roll 1d20</button>
-            <p id="const-score"></p>
-          </div>
-          <div id="charisma">
-            <p class="strong">Cha</p>
-            <button id="charisma-btn">Roll 1d20</button>
-            <p id="charisma-score"></p>
-          </div>
-          <div id="wisdom">
-            <p class="strong">Wis</p>
-            <button id="wisdom-btn">Roll 1d20</button>
-            <p id="wisdom-score"></p>
-          </div>
-        </div>
-      </div>
 
       <div id="inventory">
         <p><span class="strong">Gold: </span><span id="goldText"></span></p>
