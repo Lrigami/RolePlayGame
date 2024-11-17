@@ -122,7 +122,7 @@ const locations = [
   }
 ];
 
-// initialise stats and info
+// Initialise stats and info
 // Choose a non empty string name
 const errorNameP = document.getElementById("error-name");
 const nameDiv = document.getElementById("name-div");
@@ -188,11 +188,41 @@ abilities.forEach((ability) => {
   }
 })
 
-// Start gold amount
+// Starting gold amount
 document.getElementById("gold-btn").onclick = () => {
   goldText.innerText = Math.floor(Math.random() * 20) + 10;
   document.getElementById("gold-btn").classList.toggle("hidden");
 }
+
+// Chosen class 
+let selectedClass = document.getElementById("selected-class");
+let classes = [
+  {
+    name: "Barbarian", pv: 12, bonus: 3, ability: "str", skills: ["Athletics", "Training", "Intimidation", "Nature", "Perception", "Survival"], weapons: ["a battle axe", "a sword", "a mace", "a halberd"], belongings: ["explorer bag", "5 survival rations", "a purse"]
+  }, 
+  {
+    name: "Magician", pv: 6, bonus: 3, ability: "wisdom", skills: ["Arcana", "History", "Intuition", "Investigation", "Medicine", "Religion", "Deception"], weapons: ["a staff", "a dagger"], belongings: ["satchel with magical components", "explorer bag", "5 survival rations", "a grimoire", "a purse"]
+  }, 
+  {
+
+  }, 
+  {
+    
+  }
+]
+selectedClass.addEventListener("change", () => {
+  let chosenClass = selectedClass.value;
+  if (chosenClass === "Barbarian") {
+
+  } else if (chosenClass === "Magician") {
+
+  } else if (chosenClass === "Monk") {
+
+  } else if (chosenClass === "Ranger") {
+
+  }
+})
+
 
 // initialise buttons
 button1.onclick = goStore;
