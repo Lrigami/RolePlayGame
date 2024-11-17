@@ -11,38 +11,227 @@
 
   <body>
 
+    <div id="welcome">
+      <div id="page-one">
+        <h1>Welcome to XXX RPG !</h1>
+      </div>
+      <div id="page-two">
+        <h2>XXX RPG rules</h2>
+        <details>
+          <summary>Game rules:</summary>
+          <!-- Presentation -->
+          <details>
+            <summary>Game system</summary>
+            <p>In the course of your adventure, you will be required to throw dice during certain actions. You will be told which die to roll each time. For example, when making a perception roll, you'll need to roll a die of 20 (1d20). In combat, you count the damage inflicted on enemies with a die of 4 (1d4) or a die of 6 (1d6).</p>
+            <p>Some rolls may receive bonuses depending on your character's characteristics and skills. For example, a character with a lot of strength can add 1 or 2 to a combat roll.</p>
+            <p class="italic">Example: I roll 1d6. The result is 4. My character has a +1 strength bonus. My total result is therefore 4+1, i.e. 5. I therefore inflict 5 points of damage on my opponent.</p>
+            <p>The dice rolls will also be used to determine your characters' characteristics.</p>
+          </details>
+
+          <!-- Abilities and Skills -->
+          <details>
+            <summary>Abilities and Skills</summary>
+            <p>There are 6 main characteristics: <span class="strong">Charisma</span> (Cha), <span class="strong">Constitution</span> (Con), <span class="strong">Dexterity</span> (Dex), <span class="strong">Strength</span> (Str), <span class="strong">Intelligence</span> (Int) and <span class="strong">Wisdom</span> (Wis).</p>
+
+            <!-- Charisma -->
+            <p><span class="strong">Charisma</span> is used for the following skills: Intimidation, Persuasion, Representation and Deception.
+              <ul>
+                <li><span class="strong">Intimidation: </span>Intimidate a character or an opponent by threat.</li>
+                <li><span class="strong">Persuasion: </span>Persuade a character or an opponent to do or not do something. Influence them in one direction or another.</li>
+                <li><span class="strong">Representation: </span>Play a musical instrument, sing or tell stories.</li>
+                <li><span class="strong">Deception: </span>Allows you to lie.</li>
+              </ul>
+            </p>
+            
+            <!-- Constitution -->
+            <p><span class="strong">Constitution: </span> determines your stamina and therefore your life points.</p>
+
+            <!-- Dexterity -->
+            <p><span class="strong">Dexterity</span> is used for the following skills: Acrobatics, Stealth, Escapology.
+              <ul>              
+                <li><span class="strong">Acrobatics: </span>Enables you to stay on your feet in tricky situations (e.g. running on ice, zigzagging between traps, walking on a thin tree trunk, etc.).</li>
+                <li><span class="strong">Stealth: </span>Enables you to avoid being spotted by a character or an opponent.</li>
+                <li><span class="strong">Escapology: </span>Pick locks or steal objects.</li>
+              </ul>
+            </p>
+
+            <!-- Strength -->
+            <p><span class="strong">Strength</span> is used for the following skills: Athletics. It is also used in combat.
+              <ul>
+                <li><span class="strong">Athletics: </span>Enables you to run faster, jump higher or further, push objects, climb, swim, etc.</li>
+              </ul>
+            </p>
+
+            <!-- Intelligence -->
+            <p><span class="strong">Intelligence</span> is used for the following skills: Arcana, Investigation, History, Nature and Religion.
+              <ul>
+                <li><span class="strong">Arcana: </span>Allows you to remember things about magical objects, spells, occult symbols, etc.</li>
+                <li><span class="strong">History: </span>Enables you to recall historical events, wars, power plays, etc.</li>
+                <li><span class="strong">Investigation: </span>Allows you to make deductions from clues you find, identify weak points and hidden objects...</li>
+                <li><span class="strong">Nature: </span>Deduce information about the terrain, plants, animals or the weather.</li>
+                <li><span class="strong">Religion: </span>Remember things about gods, rites, traditions, sacred symbols, cults...</li>
+              </ul>
+            </p>
+
+            <!-- Wisdom -->
+            <p><span class="strong">Wisdom </span>is used for the following skills: training, intuition, medicine, perception and survival.
+              <ul>
+                <li><span class="strong">Training: </span>Calm or train a wild or domestic animal.</li>
+                <li><span class="strong">Intuition: </span>Detect the true intentions of a character or creature.</li>
+                <li><span class="strong">Medicine: </span>Diagnose or cure an illness.</li>
+                <li><span class="strong">Perception: </span>Detect the presence of something or someone.</li>
+                <li><span class="strong">Survival: </span>Allows you to follow tracks, hunt, navigate complicated terrain or predict the weather or natural disasters.</li>
+              </ul>
+            </p>
+
+            <p>Your score in each characteristic will be calculated by rolling 1 die of 20 for each one when you create your character in the next phase.</p>
+            <p class="italic">Example: I roll 1 die of 20 for strength. I get 14. I therefore have a strength of 14.</p>
+
+            <p>Having a high score in these characteristics gives bonuses to certain rolls. If you score between 11 and 15 for one of your characteristics, it will receive a +1 bonus for the associated skill roll.</p>
+            <p class="italic">Example: I have 14 strength. I need to make an athletics roll to climb a cliff. I roll a 20. I get 12. I add a +1 bonus due to my strength. My final result is 13. </p>
+            <p>If you get between 16 and 19 for one of your characteristics, it will benefit from a +2 bonus when you make an associated skill roll. If you get a score of 20 for one of your characteristics, it will benefit from a +3 bonus when you make an associated skill roll.</p>
+            <p>The Constitution roll will be added to the chosen character's starting health.</p>
+
+            <p>As for the skills, your character can choose to specialise in two of them, depending on his availability. A specialisation will automatically give you a +2 bonus on a roll.</p>
+            <p class="italic">Example: I'm a barbarian who chooses to specialise in Dressage. This is a skill that depends on the Wisdom characteristic. I have a Wisdom score of 9, so I don't get a bonus. On a Dressage roll, I roll 1 die of 20. I get 7. As I'm specialised in Dressage, I can add +2 to this roll, even though I don't have a Wisdom bonus. So I get 7 + 2, or 9 for my Dressage roll. </p>
+          </details>
+          
+          <!-- Character Creation -->
+          <details>
+            <summary>Character Creation</summary>
+            <p>All the manipulations for the creation of you character will be handled automatically in the next phase. You can find the principles below:</p>
+            <p>You can choose between four character classes: <span class="strong">Barbarian</span>, <span class="strong">Magician</span>, <span class="strong">Monk</span> or <span class="strong">Ranger</span>. Each class starts with different health points and equipment. Each class also has different characteristics and skills. Each class starts the adventure with an explorer's bag containing <span class="strong">5 survival rations</span> and a purse. To find out how many coins you have in your purse, roll 1d20 and add 10 to the total.</p>
+
+            <ul>
+              <!-- Barbarian -->
+              <li>
+                <span class="strong">Barbarian</span>
+                <p>Barbarians are humans with great strength and willpower. They are able to use their strength in battle. Barbarians have exceptional reflexes, stamina and physical abilities.</p>
+                <p>Your barbarian starts with <span class="strong">12 hp + the Constitution roll</span>.</p>
+                <p class="italic">Example: I have 16 Constitution. I add my character's starting HP to this roll. 16 + 12 = 28. My character therefore has 28 HP.</p>
+                <p>Add +3 to your strength characteristic, up to a limit of 20.</p>
+                <p>Your barbarian can master all weapons and armour.</p>
+                <p>Your barbarian can specialise in 2 of the following skills: Athletics, Dressage, Intimidation, Nature, Perception and Survival.</p>
+                <p>Your barbarian starts with a weapon of your choice: a battle axe, a sword, a mace or a halberd. He also has an explorer's bag with 5 survival rations, and a purse.</p>
+              </li>
+
+              <!-- Magician -->
+              <li>
+                <span class="strong">Magician</span>
+                <p>Your magician starts with <span class="strong">6 hp + the Constitution roll</span>.</p>
+                <p>Add +3 to your Wisdom attribute, up to a limit of 20.</p>
+                <p>Your magician can master staffs, light weapons and light armour.</p>
+                <p>Your magician can specialise in 2 of the following skills: Arcana, History, Intuition, Investigation, Medicine, Religion and Deception.</p>
+                <p>Your magician starts with a weapon of your choice: a staff or a dagger. He also has a satchel with magical components, an explorer's bag with 5 survival rations, a grimoire and a purse.</p>
+              </li>
+
+              <!-- Monk -->
+              <li>
+                <span class="strong">Monk</span>
+                <p>Your monk starts with <span class="strong">8 hp + the Constitution roll</span>.</p>
+                <p>Add +3 to your Intelligence rating, up to a limit of 20.</p>
+                <p>Your monk can master all light weapons and light and heavy armour.</p>
+                <p>Your monk can specialise in 2 of the following skills: Acrobatics, Athletics, Discretion, History, Intuition, Persuasion, Representation and Religion.</p>
+                <p>Your monk starts with a weapon to choose from: a short sword, a spear, a staff or a dagger. He also has an explorer's bag with 5 survival rations, and a purse.</p>
+              </li>
+
+              <!-- Rangers -->
+              <li>
+                <span class="strong">Rangers</span>
+                <p>Your ranger starts with <span class="strong">10 hp + Constitution modifier</span>.</p>
+                <p>Add +3 to your Dexterity characteristic, up to a limit of 20.</p>
+                <p>Your ranger can master light weapons and armour as well as ranged weapons.</p>
+                <p>Your ranger can specialise in 2 of the following skills: Athletics, Discretion, Dressage, Escamotage, Intuition, Investigation, Nature, Perception and Survival.</p>
+                <p>Your ranger starts with a weapon of your choice: a short sword, a dagger or a spear. He also has an explorer's bag with 5 survival rations, a longbow and a quiver containing 20 arrows, and a purse.</p>
+              </li>
+            </ul>
+          </details>
+
+          <!-- Weapons and Objects -->
+          <details>
+            <summary>Weapons and possessions</summary>
+            <p>Your character starts out with at least one weapon. During the course of the adventure, he will be able to buy other weapons or armour depending on his level of proficiency.</p>
+            <ul>
+              <li>
+                <p><span class="strong">Light armour: </span>Leather amrour, simple amrour.</p>
+              </li>
+              <li>
+                <p><span class="strong">Heavy armour: </span>Iron armour, Chain mall.</p>
+              </li>
+              <li>
+                <p><span class="strong">Light weapons: </span>Staff (reserved for the Magician ans the Monk), Dagger, Short sword, Spear.</p>
+              </li>
+              <li>
+                <p><span class="strong">Heavy weapons: </span>Long sword, War axe, Halberd, War hammer, Weapon mace.</p>
+              </li>
+              <li>
+                <p><span class="strong">Ranged weapons </span>(for Rangers only): Longbow, Crossbow.</p>
+              </li>
+            </ul>
+            <p>Your character cannot carry more than one suit of armour and more than two weapons at the same time. If the adventure provides an opportunity to obtain other weapons or armour, your character will have to make a choice.</p>
+            <p>As for the items, your character has an explorer's bag to carry them in. Survival rations and found objects are stored in this bag. Some special items will have to be transported differently. If this is the case, the adventure will specify it.</p>
+            <p>The purse can carry no more than 50 gold coins.</p>
+          </details>
+
+          <!-- Combat system -->
+          <details>
+            <summary>Combat system</summary>
+            <p>The adventure will always specify whether your character or your enemies should engage in combat. Combat is then turn-based. Your enemies have a certain number of HP, and so do you. You roll the dice for yourself and for your enemies too.</p>
+            <p>Damage is calculated using a die of 4 for light weapons, the bow and magician's spells, and a die of 6 for heavy weapons and the crossbow. Wearing light armour protects you from 1 damage. Wearing heavy armour protects you from 2 damage but causes you to lose 1 Dexterity.</p>
+            <p>If your HP drops to 0, your character will succumb to his attacks and you will have to start the adventure again. The same applies if you run out of survival rations when you need them.</p>
+            <p class="italic">
+              <p><span class="strong">Example 1:</span> You have 25 hp. You wear leather armour and attack with a short sword. Your opponent has 12 hp. He is not wearing armour and attacks with a longsword.</p>
+              <p>On your turn: roll a die for 4. The result is 4: you inflict 4 damage. He has only 8 hp left.</p>
+              <p>On his turn: roll a 6. The result is 5. As you are wearing leather armour, it protects you from 1 damage. He therefore inflicts 4 damage. You only have 21 hp left.</p>
+              <p>The first to fall to 0 is considered dead.</p>
+            </p>
+            <p class="italic">
+              <p><span class="strong">Example 2:</span> You have 25 hp. You are wearing leather armour and attacking with a short sword. You have 2 opponents in front of you, each with 8 hp. They are not wearing armour and attack with a longsword.</p>
+              <p>On your turn: you choose an opponent. Roll a 4. The result is 4: you inflict 4 damage. He only has 4 hp left. The other opponent is unharmed.</p>
+              <p>Opponent 1's turn: roll a 6. The result is 5. As you are wearing leather armour, it protects you from 1 damage. He therefore inflicts 4 damage. You only have 21 hp left.</p>
+              <p>Opponent 2's turn: roll 6. The result is 2. As you are wearing leather armour, it protects you from 1 damage. He therefore inflicts 1 damage. You only have 20 hp left.</p>
+              <p>You will need to kill both enemies to defeat them. If your hp gauge falls to 0, along with those of the two enemies, you will have failed the battle.</p>
+            </p>
+            <p>To regain hp as your adventure progresses, you'll need to consume survival rations. One survival ration gives you 5 hp. You cannot exceed the maximum Constitution you have at the start.</p>
+            <p class="italic">Example: You start with 22 hp. You lose 3 hp in a battle and decide to consume a survival ration. Your total then rises to 22 hp, not 25 hp.</p>
+            <p>Make good use of your rations. They can be consumed at any time, including during combat. However, if you choose to consume a survival ration during your turn, you cannot attack.</p>
+          </details>
+        </details>
+      </div>
+    </div>
+
     <div id="character">
       <div id="info">
         <p><span class="strong">Name: </span><label id="chosen-name-label" for="chosen-name">Chose a name.</label><input id="chosen-name" name="player-name" placeholder="e.g. Wolf Tamer"><button id="validate-name">Validate</button><span id="player-name"></span></p>
 
         <div id="abilities">
           <div id="intel">
-            <p class="strong">Intelligence</p>
+            <p class="strong">Int</p>
             <button id="intel-btn">Roll 1d20</button>
             <p id="intel-score"></p>
           </div>
           <div id="strength">
-            <p class="strong">Strength</p>
+            <p class="strong">Str</p>
             <button id="strength-btn">Roll 1d20</button>
             <p id="strength-score"></p>
           </div>
           <div id="dexterity">
-            <p class="strong">Dexterity</p>
+            <p class="strong">Dex</p>
             <button id="dex-btn">Roll 1d20</button>
             <p id="dex-score"></p>
           </div>
           <div id="constitution">
-            <p class="strong">Consitution</p>
+            <p class="strong">Con</p>
             <button id="const-btn">Roll 1d20</button>
             <p id="const-score"></p>
           </div>
           <div id="charisma">
-            <p class="strong">Charisma</p>
+            <p class="strong">Cha</p>
             <button id="charisma-btn">Roll 1d20</button>
             <p id="charisma-score"></p>
           </div>
           <div id="wisdom">
-            <p class="strong">Wisdom</p>
+            <p class="strong">Wis</p>
             <button id="wisdom-btn">Roll 1d20</button>
             <p id="wisdom-score"></p>
           </div>
