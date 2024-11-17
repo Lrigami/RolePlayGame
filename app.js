@@ -176,6 +176,14 @@ abilities.forEach((ability) => {
     document.getElementById(`${ability}-score`).innerText = `${score}`;
     if (score >= 10) {
       document.getElementById(`${ability}-btn`).classList.add("hidden");
+      document.getElementById(`${ability}-modifier`).innerText = "0";
+      if (score >= 11 && score <= 15) {
+        document.getElementById(`${ability}-modifier`).innerText = "1";
+      } else if (score >= 16 && score <= 19) {
+        document.getElementById(`${ability}-modifier`).innerText = "2";
+      } else if (score === 20) {
+        document.getElementById(`${ability}-modifier`).innerText = "3";
+      }
     }
   }
 })
