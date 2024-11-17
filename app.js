@@ -174,19 +174,25 @@ abilities.forEach((ability) => {
   document.getElementById(`${ability}-btn`).onclick = () => {
     let score = Math.floor(Math.random() * 20);
     document.getElementById(`${ability}-score`).innerText = `${score}`;
-    if (score >= 10) {
-      document.getElementById(`${ability}-btn`).classList.add("hidden");
-      document.getElementById(`${ability}-modifier`).innerText = "0";
-      if (score >= 11 && score <= 15) {
-        document.getElementById(`${ability}-modifier`).innerText = "1";
+    if (score >= 10) { // if score < 10 : reroll the dice
+      document.getElementById(`${ability}-btn`).classList.toggle("hidden");
+      document.getElementById(`${ability}-modifier`).innerText = 0;
+      if (score >= 11 && score <= 15) { // add abilities modifiers
+        document.getElementById(`${ability}-modifier`).innerText = 1;
       } else if (score >= 16 && score <= 19) {
-        document.getElementById(`${ability}-modifier`).innerText = "2";
+        document.getElementById(`${ability}-modifier`).innerText = 2;
       } else if (score === 20) {
-        document.getElementById(`${ability}-modifier`).innerText = "3";
+        document.getElementById(`${ability}-modifier`).innerText = 3;
       }
     }
   }
 })
+
+// Start gold amount
+document.getElementById("gold-btn").onclick = () => {
+  goldText.innerText = Math.floor(Math.random() * 20) + 10;
+  document.getElementById("gold-btn").classList.toggle("hidden");
+}
 
 // initialise buttons
 button1.onclick = goStore;
