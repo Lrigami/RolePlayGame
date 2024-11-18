@@ -27,6 +27,7 @@ const dexBtn = document.getElementById("dex-btn");
 const constBtn = document.getElementById("const-btn");
 const charBtn = document.getElementById("char-btn");
 const wisdomBtn = document.getElementById("wisdom-btn");
+const validateExpertiseBtn = document.getElementById("validate-expertise");
 
 // text
 const text = document.querySelector("#text");
@@ -36,6 +37,9 @@ const playerClass = document.getElementById("player-class");
 const habilityText = document.getElementById("habilityText");
 const enduranceText = document.getElementById("enduranceText");
 const goldText = document.querySelector("#goldText");
+const expertiseOne = document.getElementById("expertise-choice-one");
+const expertiseTwo = document.getElementById("expertise-choice-two");
+const alertExpertise = document.getElementById("alert-expertise");
 
 // monsters infos
 const monsterStats = document.querySelector("#monsterStats");
@@ -186,27 +190,59 @@ validateName.addEventListener("click", () => {
 
 // Abilities stats
 const abilities = ["intel", "str", "dex", "const", "char", "wisdom"];
-abilities.forEach((ability) => {
-  document.getElementById(`${ability}-btn`).onclick = () => {
-    let score = Math.floor(Math.random() * 20);
-    document.getElementById(`${ability}-score`).innerText = score ;
-    if (score >= 10) { // if score < 10 : reroll the dice
-      document.getElementById(`${ability}-btn`).classList.toggle("hidden");
-      document.getElementById(`${ability}-modifier`).innerText = 0;
-      if (score >= 11 && score <= 15) { // add abilities modifiers
-        document.getElementById(`${ability}-modifier`).innerText = 1;
-      } else if (score >= 16 && score <= 19) {
-        document.getElementById(`${ability}-modifier`).innerText = 2;
-      } else if (score === 20) {
-        document.getElementById(`${ability}-modifier`).innerText = 3;
-      }
-    }
+// Attribute a value between 1 and 20 to each ability
+const abilityScore = (event) => {
+
+  const ability = event.target.id.replace("-btn", "");
+  let score = Math.floor(Math.random() * 20) + 1;
+
+  const scoreElement = document.getElementById(`${ability}-score`);
+  const btnElement = document.getElementById(`${ability}-btn`);
+
+  if (score >= 10) {
+    btnElement.classList.toggle("hidden");
+    let currentScore = parseInt(scoreElement.innerText) || 0;
+    scoreElement.innerText = currentScore + score;
   }
-})
+}
+
+// update the ability modifier 
+const abilityModifier = (ability) => {
+  let scoreElement = document.getElementById(`${ability}-score`);
+  let modifierElement = document.getElementById(`${ability}-modifier`);
+  
+  let score = parseInt(scoreElement.innerText) || 0;
+
+  let modifier = 0;
+  if (score == 20) {
+    modifier = 3;
+  } else if (score >= 16) {
+    modifier = 2;
+  } else if (score >= 11) {
+    modifier = 1;
+  }
+
+  modifierElement.innerText = modifier;
+}
+
+// for each ability : call the 2 functions above
+abilities.forEach((ability) => {
+  const btnElement = document.getElementById(`${ability}-btn`);
+  const scoreElement = document.getElementById(`${ability}-score`);
+
+  if (btnElement && scoreElement) {
+    btnElement.onclick = abilityScore;
+    scoreElement.addEventListener("DOMSubtreeModified", () => {
+      abilityModifier(ability);
+    });
+  } else {
+    console.warn(`Élément manquant pour la capacité : ${ability}`);
+  }
+});
 
 // Starting gold amount
 document.getElementById("gold-btn").onclick = () => {
-  goldText.innerText = Math.floor(Math.random() * 20) + 10;
+  goldText.innerText = Math.floor(Math.random() * 20) + 11;
   document.getElementById("gold-btn").classList.toggle("hidden");
 }
 
@@ -249,14 +285,15 @@ const validateClassChoice = () => {
   const chosenClass = getSelectedClass();
   if (!chosenClass) return;
 
-  classRecap.classList.toggle("hidden");
-  validateClass.classList.toggle("hidden");
-  selectedClass.classList.toggle("hidden");
+  classRecap.classList.add("hidden");
+  validateClass.classList.add("hidden");
+  selectedClass.classList.add("hidden");
   playerClass.innerText = `${chosenClass.name}`;
 
   const abilityScore = document.getElementById(`${chosenClass.ability}-score`);
   if (abilityScore) {
     const finalAbilityScore = Number(abilityScore.innerText) + Number(chosenClass.bonus);
+    // abilities.forEach((ability) => { abilityModifier(ability)});
     if (finalAbilityScore <= 20) {
       abilityScore.innerText = finalAbilityScore;
     } else {
@@ -264,12 +301,62 @@ const validateClassChoice = () => {
     }
   }
   
-  document.getElementById("selected-class-label").classList.toggle("hidden");
+  document.getElementById("selected-class-label").classList.add("hidden");
+
+  return chosenClass;
 };
 
 selectedClass.addEventListener("change", updateClassRecap);
-validateClass.addEventListener("click", validateClassChoice);
+validateClass.addEventListener("click", () => {
+  expertiseChoices();
+});
 
+// Expertises Choices
+const selectedExpertiseOne = document.getElementById("select-expertise-one");
+const selectedExpertiseTwo = document.getElementById("select-expertise-two");
+
+const expertiseChoices = () => {
+  const chosenClass = validateClassChoice();
+  
+  chosenClass.skills.forEach((skill) => {
+    const skillOptionOne = document.createElement("option");
+    const skillOptionTwo = document.createElement("option");
+    skillOptionOne.value = `${skill}`;
+    skillOptionTwo.value = `${skill}`;
+    skillOptionOne.innerText = `${skill}`;
+    skillOptionTwo.innerText = `${skill}`;
+    selectedExpertiseOne.appendChild(skillOptionOne);
+    selectedExpertiseTwo.appendChild(skillOptionTwo);
+  });
+};
+
+const chosenExpertiseOne = () => {
+  return selectedExpertiseOne.value;
+};
+
+const chosenExpertiseTwo = () => {
+  return selectedExpertiseTwo.value;
+};
+
+selectedExpertiseOne.addEventListener("change", chosenExpertiseOne);
+selectedExpertiseTwo.addEventListener("change", chosenExpertiseTwo);
+
+const validateExpertiseChoices = () => {
+  if (chosenExpertiseOne() === chosenExpertiseTwo()) {
+    alertExpertise.innerText = "Please choose two different expertises.";
+  } else {
+    expertiseOne.innerHTML += `${chosenExpertiseOne()}`;
+    expertiseTwo.innerHTML += `${chosenExpertiseTwo()}`;
+    document.getElementById("select-expertise-one-label").classList.add("hidden");
+    selectedExpertiseOne.classList.add("hidden");
+    document.getElementById("select-expertise-two-label").classList.add("hidden");
+    selectedExpertiseTwo.classList.add("hidden");
+    validateExpertiseBtn.classList.add("hidden");
+    alertExpertise.classList.add("hidden");
+  }
+}; 
+
+validateExpertiseBtn.addEventListener("click", validateExpertiseChoices);
 
 // initialise buttons
 button1.onclick = goStore;

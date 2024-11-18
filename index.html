@@ -243,7 +243,8 @@
               <p class="strong">Class: <span id="player-class"></span></p>
               <label id="selected-class-label" for="selected-class">Select a class amongst: </label>
               <select name="selected-class" id="selected-class" required>
-                <option value="Barbarian" selected>Barbarian</option>
+                <option value="Select-a-class" selected>--Select--one--</option>
+                <option value="Barbarian">Barbarian</option>
                 <option value="Magician">Magician</option>
                 <option value="Monk">Monk</option>
                 <option value="Ranger">Ranger</option>
@@ -260,9 +261,27 @@
             </div>
 
             <!-- Expertises -->
-            <div>
+            <div id="expertises">
+              <div id="expertise-one">
+                <p id="expertise-choice-one"><span class="strong">E1:&nbsp;</span></p>
+                <label id="select-expertise-one-label" for="select-expertise-one">Choose an expertise:</label>
+                <select id="select-expertise-one" name="select-expertise-one">
+                  <!-- filled in js -->
+                </select>
+              </div>
 
+              <div id="expertise-two">
+                <p id="expertise-choice-two"><span class="strong">E2:&nbsp;</span></p>
+                <label  id="select-expertise-two-label" for="select-expertise-two">Choose a second expertise:</label>
+                <select id="select-expertise-two" name="select-expertise-two">
+                  <!-- filles in js -->
+                </select>
+
+              </div>                
+              <button id="validate-expertise">Validate</button>
+              <p id="alert-expertise"></p>
             </div>
+
           </div>
       </div>
     </div>
