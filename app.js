@@ -265,16 +265,16 @@ document.getElementById("gold-btn").onclick = () => {
 let selectedClass = document.getElementById("selected-class");
 let classes = [
   {
-    name: "Barbarian", pv: 12, bonus: 3, abilityRecap: "Strength", ability: "str", master: "all weapons and armours", skills: ["Athletics", "Training", "Intimidation", "Nature", "Perception", "Survival"], weapon: "a short sword", belongings: ["5 survival rations"]
+    name: "Barbarian", pv: 12, bonus: 3, ability_recap: "Strength", ability: "str", master: "all weapons and armours", skills: ["Athletics", "Training", "Intimidation", "Nature", "Perception", "Survival"], weapon: "a short sword", belongings: ["5 survival rations"]
   }, 
   {
-    name: "Magician", pv: 6, bonus: 3, abilityRecap: "Wisdom", ability: "wisdom", master: "staffs, light weapons and light armours", skills: ["Arcana", "History", "Intuition", "Investigation", "Medicine", "Religion", "Deception"], weapon: "a staff", belongings: ["satchel with magical components", "5 survival rations", "a grimoire"]
+    name: "Magician", pv: 6, bonus: 3, ability_recap: "Wisdom", ability: "wisdom", master: "staffs, light weapons and light armours", skills: ["Arcana", "History", "Intuition", "Investigation", "Medicine", "Religion", "Deception"], weapon: "a staff", belongings: ["satchel with magical components", "5 survival rations", "a grimoire"]
   }, 
   {
-    name: "Monk", pv: 8, bonus: 3, abilityRecap: "Intelligence", ability: "intel", master: "all light weapons and light and heavy armours", skills: ["Acrobatics", "Athletics", "Discretion", "History", "Intuition", "Persuasion", "Representation", "Religion"], weapon: "a spear", belongings: ["5 survival rations"]
+    name: "Monk", pv: 8, bonus: 3, ability_recap: "Intelligence", ability: "intel", master: "all light weapons and light and heavy armours", skills: ["Acrobatics", "Athletics", "Discretion", "History", "Intuition", "Persuasion", "Representation", "Religion"], weapon: "a spear", belongings: ["5 survival rations"]
   }, 
   {
-    name: "Ranger", pv: 10, bonus: 3, abilityRecap: "Dexterity", ability: "dex", master: "light weapons and armour as well as ranged weapons", skills: ["Athletics", "Discretion", "Dressage", "Escamotage", "Intuition", "Investigation", "Nature", "Perception", "Survival"], weapon: "a longbow", belongings: ["5 survival rations", "a quiver with 20 arrows"]
+    name: "Ranger", pv: 10, bonus: 3, ability_recap: "Dexterity", ability: "dex", master: "light weapons and armour as well as ranged weapons", skills: ["Athletics", "Discretion", "Dressage", "Escamotage", "Intuition", "Investigation", "Nature", "Perception", "Survival"], weapon: "a longbow", belongings: ["5 survival rations", "a quiver with 20 arrows"]
   }
 ];
 
@@ -289,7 +289,7 @@ const updateClassRecap = () => {
   if (!chosenClass) return; 
 
   pvRecap.innerText = `Your ${chosenClass.name} will begin with ${chosenClass.pv} pv added to his Constitution roll.`;
-  bonusRecap.innerText = `Your ${chosenClass.name} will have a bonus of +${chosenClass.bonus} in ${chosenClass.abilityRecap}.`;
+  bonusRecap.innerText = `Your ${chosenClass.name} will have a bonus of +${chosenClass.bonus} in ${chosenClass.ability_recap}.`;
   masteringRecap.innerText = `Your ${chosenClass.name} can master ${chosenClass.master}.`;
   speRecap.innerText = `Your ${chosenClass.name} can master two of the following: ${chosenClass.skills.join(", ")}.`;
   choiceRecap.innerText = `Your ${chosenClass.name} will begin with the following weapon: ${chosenClass.weapon}.`;
