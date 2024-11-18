@@ -4,9 +4,9 @@ let gold = 50;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
-let inventory = ["stick"];
+let inventory = [];
 
-// recap info
+// classes recap info
 const classRecap = document.getElementById("class-recap"); 
 const pvRecap = document.getElementById("pv-recap"); 
 const bonusRecap = document.getElementById("bonus-recap"); 
@@ -42,16 +42,22 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 
-// weapons
+// weapons array
 const weapons = [
-  { name: 'a stick', power: 5 },
-  { name: ' a dagger', power: 20, price: 30},
-  { name: ' a claw hammer', power: 40, price: 50},
-  { name: ' a sword', power: 75, price: 80}, 
-  { name: ' a power sceptre', power: 100, price: 120}
+  { name: "a staff", die: "1d4"},
+  { name: "a dagger", die: "1d4"}, 
+  { name: "a short sword", die: "1d4"}, 
+  { name: "a spear", die: "1d4"}, 
+  { name: "a long sword", die: "1d6"}, 
+  { name: "a war axe", die: "1d6"}, 
+  { name: "a war hammer", die: "1d6"},
+  { name: "a halberd", die: "1d6"}, 
+  { name: "a weapon mace", die: "1d6"}, 
+  { name: "a longbow", die: "1d4"}, 
+  { name: "a crossbow", die: "1d6"} 
 ];
 
-// monsters
+// monsters array
 const monsters = [
   {
     name: "slime",
@@ -80,7 +86,7 @@ const monsters = [
   }
 ];
 
-// locations
+// locations array
 const locations = [
   {
     name: "town square",
@@ -208,16 +214,16 @@ document.getElementById("gold-btn").onclick = () => {
 let selectedClass = document.getElementById("selected-class");
 let classes = [
   {
-    name: "Barbarian", pv: 12, bonus: 3, abilityRecap: "Strength", ability: "str", master: "all weapons and armours", skills: ["Athletics", "Training", "Intimidation", "Nature", "Perception", "Survival"], weapons: ["a battle axe", "a sword", "a mace", "a halberd"], belongings: ["5 survival rations"]
+    name: "Barbarian", pv: 12, bonus: 3, abilityRecap: "Strength", ability: "str", master: "all weapons and armours", skills: ["Athletics", "Training", "Intimidation", "Nature", "Perception", "Survival"], weapon: "a short sword", belongings: ["5 survival rations"]
   }, 
   {
-    name: "Magician", pv: 6, bonus: 3, abilityRecap: "Wisdom", ability: "wisdom", master: "staffs, light weapons and light armours", skills: ["Arcana", "History", "Intuition", "Investigation", "Medicine", "Religion", "Deception"], weapons: ["a staff", "a dagger"], belongings: ["satchel with magical components", "5 survival rations", "a grimoire"]
+    name: "Magician", pv: 6, bonus: 3, abilityRecap: "Wisdom", ability: "wisdom", master: "staffs, light weapons and light armours", skills: ["Arcana", "History", "Intuition", "Investigation", "Medicine", "Religion", "Deception"], weapon: "a staff", belongings: ["satchel with magical components", "5 survival rations", "a grimoire"]
   }, 
   {
-    name: "Monk", pv: 8, bonus: 3, abilityRecap: "Intelligence", ability: "intel", master: "all light weapons and light and heavy armours", skills: ["Acrobatics", "Athletics", "Discretion", "History", "Intuition", "Persuasion", "Representation", "Religion"], weapons: ["a short sword", "a spear", "a staff", "a dagger"], belongings: ["5 survival rations"]
+    name: "Monk", pv: 8, bonus: 3, abilityRecap: "Intelligence", ability: "intel", master: "all light weapons and light and heavy armours", skills: ["Acrobatics", "Athletics", "Discretion", "History", "Intuition", "Persuasion", "Representation", "Religion"], weapon: "a spear", belongings: ["5 survival rations"]
   }, 
   {
-    name: "Ranger", pv: 10, bonus: 3, abilityRecap: "Dexterity", ability: "dex", master: "light weapons and armour as well as ranged weapons", skills: ["Athletics", "Discretion", "Dressage", "Escamotage", "Intuition", "Investigation", "Nature", "Perception", "Survival"], weapons: ["a short sword", "a dagger", "a spear"], belongings: ["5 survival rations", "a longbow", "a quiver with 20 arrows"]
+    name: "Ranger", pv: 10, bonus: 3, abilityRecap: "Dexterity", ability: "dex", master: "light weapons and armour as well as ranged weapons", skills: ["Athletics", "Discretion", "Dressage", "Escamotage", "Intuition", "Investigation", "Nature", "Perception", "Survival"], weapon: "a longbow", belongings: ["5 survival rations", "a quiver with 20 arrows"]
   }
 ];
 
@@ -235,7 +241,7 @@ const updateClassRecap = () => {
   bonusRecap.innerText = `Your ${chosenClass.name} will have a bonus of +${chosenClass.bonus} in ${chosenClass.abilityRecap}.`;
   masteringRecap.innerText = `Your ${chosenClass.name} can master ${chosenClass.master}.`;
   speRecap.innerText = `Your ${chosenClass.name} can master two of the following: ${chosenClass.skills.join(", ")}.`;
-  chosenClassRecap.innerText = `Your ${chosenClass.name} will begin with one of the following weapons: ${chosenClass.weapons.join(", ")}.`;
+  choiceRecap.innerText = `Your ${chosenClass.name} will begin with the following weapon: ${chosenClass.weapon}.`;
 };
 
 // when the player validate his class choice, everything linked to this class update automatically
@@ -250,7 +256,12 @@ const validateClassChoice = () => {
 
   const abilityScore = document.getElementById(`${chosenClass.ability}-score`);
   if (abilityScore) {
-    abilityScore.innerText = Number(abilityScore.innerText) + Number(chosenClass.bonus);
+    const finalAbilityScore = Number(abilityScore.innerText) + Number(chosenClass.bonus);
+    if (finalAbilityScore <= 20) {
+      abilityScore.innerText = finalAbilityScore;
+    } else {
+      abilityScore.innerText = 20;
+    }
   }
   
   document.getElementById("selected-class-label").classList.toggle("hidden");

@@ -112,7 +112,7 @@
                 <p>Add +3 to your strength characteristic, up to a limit of 20.</p>
                 <p>Your barbarian can master all weapons and armour.</p>
                 <p>Your barbarian can specialise in 2 of the following skills: Athletics, Dressage, Intimidation, Nature, Perception and Survival.</p>
-                <p>Your barbarian starts with a weapon of your choice: a battle axe, a sword, a mace or a halberd. He also has an explorer's bag with 5 survival rations, and a purse.</p>
+                <p>Your barbarian starts with a short sword. He also has an explorer's bag with 5 survival rations, and a purse.</p>
               </li>
 
               <!-- Magician -->
@@ -122,7 +122,7 @@
                 <p>Add +3 to your Wisdom attribute, up to a limit of 20.</p>
                 <p>Your magician can master staffs, light weapons and light armour.</p>
                 <p>Your magician can specialise in 2 of the following skills: Arcana, History, Intuition, Investigation, Medicine, Religion and Deception.</p>
-                <p>Your magician starts with a weapon of your choice: a staff or a dagger. He also has a satchel with magical components, an explorer's bag with 5 survival rations, a grimoire and a purse.</p>
+                <p>Your magician starts with a staff. He also has a satchel with magical components, an explorer's bag with 5 survival rations, a grimoire and a purse.</p>
               </li>
 
               <!-- Monk -->
@@ -132,7 +132,7 @@
                 <p>Add +3 to your Intelligence rating, up to a limit of 20.</p>
                 <p>Your monk can master all light weapons and light and heavy armour.</p>
                 <p>Your monk can specialise in 2 of the following skills: Acrobatics, Athletics, Discretion, History, Intuition, Persuasion, Representation and Religion.</p>
-                <p>Your monk starts with a weapon to choose from: a short sword, a spear, a staff or a dagger. He also has an explorer's bag with 5 survival rations, and a purse.</p>
+                <p>Your monk starts with a spear. He also has an explorer's bag with 5 survival rations, and a purse.</p>
               </li>
 
               <!-- Rangers -->
@@ -142,7 +142,7 @@
                 <p>Add +3 to your Dexterity characteristic, up to a limit of 20.</p>
                 <p>Your ranger can master light weapons and armour as well as ranged weapons.</p>
                 <p>Your ranger can specialise in 2 of the following skills: Athletics, Discretion, Dressage, Escamotage, Intuition, Investigation, Nature, Perception and Survival.</p>
-                <p>Your ranger starts with a weapon of your choice: a short sword, a dagger or a spear. He also has an explorer's bag with 5 survival rations, a longbow and a quiver containing 20 arrows, and a purse.</p>
+                <p>Your ranger starts with a longbow. He also has an explorer's bag with 5 survival rations, a quiver containing 20 arrows, and a purse.</p>
               </li>
             </ul>
           </details>
@@ -209,27 +209,6 @@
               <input id="chosen-name" name="player-name" placeholder="e.g. Wolf Tamer" required>
               <button id="validate-name">Validate</button>
             </div>
-    
-            <!-- Class -->
-            <div>
-              <p class="strong">Class: <span id="player-class"></span></p>
-              <label id="selected-class-label" for="selected-class">Select a class amongst: </label>
-              <select name="selected-class" id="selected-class" required>
-                <option value="Barbarian" selected>Barbarian</option>
-                <option value="Magician">Magician</option>
-                <option value="Monk">Monk</option>
-                <option value="Ranger">Ranger</option>
-              </select>
-              <button id="validate-class">Validate</button>
-            </div>
-
-            <div id="class-recap">
-              <p id="pv-recap"></p>
-              <p id="bonus-recap"></p>
-              <p id="mastering-recap"></p>
-              <p id="specialisation-recap"></p>
-              <p id="choice-recap"></p>
-            </div>
 
             <!-- Abilities -->
             <div id="abilities">
@@ -258,8 +237,29 @@
                 <button id="wisdom-btn">Roll 1d20</button>
               </div>
             </div>
+    
+            <!-- Classes -->
+            <div>
+              <p class="strong">Class: <span id="player-class"></span></p>
+              <label id="selected-class-label" for="selected-class">Select a class amongst: </label>
+              <select name="selected-class" id="selected-class" required>
+                <option value="Barbarian" selected>Barbarian</option>
+                <option value="Magician">Magician</option>
+                <option value="Monk">Monk</option>
+                <option value="Ranger">Ranger</option>
+              </select>
+              <button id="validate-class">Validate</button>
+            </div>
 
-            <!-- Expertise -->
+            <div id="class-recap">
+              <p id="pv-recap"></p>
+              <p id="bonus-recap"></p>
+              <p id="mastering-recap"></p>
+              <p id="specialisation-recap"></p>
+              <p id="choice-recap"></p>
+            </div>
+
+            <!-- Expertises -->
             <div>
 
             </div>
