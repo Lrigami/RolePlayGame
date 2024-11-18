@@ -208,41 +208,57 @@ document.getElementById("gold-btn").onclick = () => {
 let selectedClass = document.getElementById("selected-class");
 let classes = [
   {
-    name: "Barbarian", pv: 12, bonus: 3, abilityRecap: "Strength", ability: "str", master: "all weapons and armours", skills: ["Athletics", " Training", " Intimidation", " Nature", " Perception", " Survival"], weapons: ["a battle axe", " a sword", " a mace", " a halberd"], belongings: ["5 survival rations"]
+    name: "Barbarian", pv: 12, bonus: 3, abilityRecap: "Strength", ability: "str", master: "all weapons and armours", skills: ["Athletics", "Training", "Intimidation", "Nature", "Perception", "Survival"], weapons: ["a battle axe", "a sword", "a mace", "a halberd"], belongings: ["5 survival rations"]
   }, 
   {
-    name: "Magician", pv: 6, bonus: 3, abilityRecap: "Wisdom", ability: "wisdom", master: "staffs, light weapons and light armours", skills: ["Arcana", " History", " Intuition", " Investigation", " Medicine", " Religion", " Deception"], weapons: ["a staff", " a dagger"], belongings: ["satchel with magical components", " 5 survival rations", " a grimoire"]
+    name: "Magician", pv: 6, bonus: 3, abilityRecap: "Wisdom", ability: "wisdom", master: "staffs, light weapons and light armours", skills: ["Arcana", "History", "Intuition", "Investigation", "Medicine", "Religion", "Deception"], weapons: ["a staff", "a dagger"], belongings: ["satchel with magical components", "5 survival rations", "a grimoire"]
   }, 
   {
-    name: "Monk", pv: 8, bonus: 3, abilityRecap: "Intelligence", ability: "intel", master: "all light weapons and light and heavy armours", skills: ["Acrobatics", " Athletics", " Discretion", " History", " Intuition", " Persuasion", " Representation", " Religion"], weapons: ["a short sword", " a spear", " a staff", " a dagger"], belongings: ["5 survival rations"]
+    name: "Monk", pv: 8, bonus: 3, abilityRecap: "Intelligence", ability: "intel", master: "all light weapons and light and heavy armours", skills: ["Acrobatics", "Athletics", "Discretion", "History", "Intuition", "Persuasion", "Representation", "Religion"], weapons: ["a short sword", "a spear", "a staff", "a dagger"], belongings: ["5 survival rations"]
   }, 
   {
-    name: "Ranger", pv: 10, bonus: 3, abilityRecap: "Dexterity", ability: "dex", master: "light weapons and armour as well as ranged weapons", skills: ["Athletics", " Discretion", " Dressage", " Escamotage", " Intuition", " Investigation", " Nature", " Perception", " Survival"], weapons: ["a short sword", " a dagger", " a spear"], belongings: ["5 survival rations", " a longbow", " a quiver with 20 arrows"]
+    name: "Ranger", pv: 10, bonus: 3, abilityRecap: "Dexterity", ability: "dex", master: "light weapons and armour as well as ranged weapons", skills: ["Athletics", "Discretion", "Dressage", "Escamotage", "Intuition", "Investigation", "Nature", "Perception", "Survival"], weapons: ["a short sword", "a dagger", "a spear"], belongings: ["5 survival rations", "a longbow", "a quiver with 20 arrows"]
   }
 ];
 
-classes.forEach((choice) => {
-  selectedClass.addEventListener("change", () => { // update class recap depending on class choice
-    if (selectedClass.value === choice.name) {
-      pvRecap.innerText = `Your ${choice.name} will begin with ${choice.pv} pv added to his Constitution roll.`;
-      bonusRecap.innerText = `Your ${choice.name} will have a bonus of +${choice.bonus} in ${choice.abilityRecap}.`;
-      masteringRecap.innerText = `Your ${choice.name} can master ${choice.master}.`;
-      speRecap.innerText = `Your ${choice.name} can master two of the following: ${choice.skills}.`;
-      choiceRecap.innerText = `Your ${choice.name} will begin with one of the following weapons: ${choice.weapons}.`
-    }
-  });
+// get the right class from the classes array
+const getSelectedClass = () => {
+  return classes.find((cls) => cls.name === selectedClass.value);
+}
 
-  validateClass.addEventListener("click", () => { // when the player validate his class choice, everything linked to this class update automatically
-    if (selectedClass.value === choice.name) {
-      classRecap.classList.toggle("hidden");
-      validateClass.classList.toggle("hidden");
-      selectedClass.classList.toggle("hidden");
-      playerClass.innerText = `${choice.name}`;
-      document.getElementById("selected-class-label").classList.toggle("hidden");
-      document.getElementById(`${choice.ability}-score`).innerText = Number(document.getElementById(`${choice.ability}-score`).innerText) + Number(choice.bonus);
-    }
-  })
-});
+// update class recap depending on class choice
+const updateClassRecap = () => {
+  const chosenClass = getSelectedClass();
+  if (!chosenClass) return; 
+
+  pvRecap.innerText = `Your ${chosenClass.name} will begin with ${chosenClass.pv} pv added to his Constitution roll.`;
+  bonusRecap.innerText = `Your ${chosenClass.name} will have a bonus of +${chosenClass.bonus} in ${chosenClass.abilityRecap}.`;
+  masteringRecap.innerText = `Your ${chosenClass.name} can master ${chosenClass.master}.`;
+  speRecap.innerText = `Your ${chosenClass.name} can master two of the following: ${chosenClass.skills.join(", ")}.`;
+  chosenClassRecap.innerText = `Your ${chosenClass.name} will begin with one of the following weapons: ${chosenClass.weapons.join(", ")}.`;
+};
+
+// when the player validate his class choice, everything linked to this class update automatically
+const validateClassChoice = () => {
+  const chosenClass = getSelectedClass();
+  if (!chosenClass) return;
+
+  classRecap.classList.toggle("hidden");
+  validateClass.classList.toggle("hidden");
+  selectedClass.classList.toggle("hidden");
+  playerClass.innerText = `${chosenClass.name}`;
+
+  const abilityScore = document.getElementById(`${chosenClass.ability}-score`);
+  if (abilityScore) {
+    abilityScore.innerText = Number(abilityScore.innerText) + Number(chosenClass.bonus);
+  }
+  
+  document.getElementById("selected-class-label").classList.toggle("hidden");
+};
+
+selectedClass.addEventListener("change", updateClassRecap);
+validateClass.addEventListener("click", validateClassChoice);
+
 
 // initialise buttons
 button1.onclick = goStore;
