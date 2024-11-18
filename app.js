@@ -198,11 +198,19 @@ const abilityScore = (event) => {
 
   const scoreElement = document.getElementById(`${ability}-score`);
   const btnElement = document.getElementById(`${ability}-btn`);
+  const alert = document.getElementById(`${ability}-alert`);
 
   if (score >= 10) {
     btnElement.classList.toggle("hidden");
+    alert.classList.add("hidden");
     let currentScore = parseInt(scoreElement.innerText) || 0;
-    scoreElement.innerText = currentScore + score;
+    if (currentScore + score >= 20) {
+      scoreElement.innerText = 20;
+    } else {
+      scoreElement.innerText = currentScore + score;
+    }
+  } else {
+    alert.classList.remove("hidden");
   }
 }
 
@@ -229,6 +237,13 @@ const abilityModifier = (ability) => {
 abilities.forEach((ability) => {
   const btnElement = document.getElementById(`${ability}-btn`);
   const scoreElement = document.getElementById(`${ability}-score`);
+
+  const abilityAlert = document.createElement("p");
+  abilityAlert.innerText = "Please roll again.";
+  abilityAlert.setAttribute("id", `${ability}-alert`);
+  abilityAlert.classList.add("hidden");
+  const abilityDiv = document.getElementById(`${ability}`);
+  abilityDiv.appendChild(abilityAlert);
 
   if (btnElement && scoreElement) {
     btnElement.onclick = abilityScore;
